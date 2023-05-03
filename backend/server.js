@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const colors = require("colors");
+const cors = require("cors");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleWare/errorMiddleWare");
 const PORT = process.env.PORT || 5000;
@@ -12,7 +13,7 @@ app.get("/", (_, res) => {
 });
 // connect to database
 connectDB();
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
